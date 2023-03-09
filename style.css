@@ -4,6 +4,12 @@
   box-sizing: border-box;
 
 }
+@font-face {
+  font-family: 'LOTTERIACHAB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/LOTTERIACHAB.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html, body {
   min-height: 100%;
@@ -21,18 +27,48 @@ body {
 .agora_title {
   /* z-index: -1; */
   position: absolute;
-  top: 23%;
+  top: 18%;
   left: 20%; right: 20%;
-  font-size: 6rem;
+  font-size: 5rem;
   text-align: center;
-  width: 60%;
+  width: 60%; height: 16%;
+  font-family: 'LOTTERIACHAB';
 }
 
-.form__container {
+/* .form__container {
   border: 1px solid black;
+} */
+
+.form__container > .form {
+  text-align: center;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.418);
+  box-shadow: 5px 5px 50px #bebebe,
+            -5px -5px 50px #ffffff;
+  margin-bottom: 50px;
 }
 
+.form__container > .form > .form__input--wrapper {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+}
 
+.form__input--name {
+
+}
+
+.form__input--title {
+
+}
+
+.form__textbox {
+
+}
+
+.form__submit {
+
+}
 
 
 
@@ -50,15 +86,15 @@ main {
   z-index: 1;
   margin: 7% auto;
   width: 540px;
-  border-radius: 50px;
-  background-color: rgba(255, 255, 255, 0.418);
-  box-shadow: 5px 5px 50px #bebebe,
-            -5px -5px 50px #ffffff;
+
 }
 
 .discussions__container {
   /* border: 1px solid yellow; */
-
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.418);
+  box-shadow: 5px 5px 50px #bebebe,
+            -5px -5px 50px #ffffff;
 }
 
 .discussions__container > .discussion__container {
@@ -71,10 +107,12 @@ main {
 
   display: flex;
   align-items: center;
+
+  
 }
 
 .discussions__container > .discussion__container > .discussion__avatar--wrapper {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 70%;
   overflow: hidden;
   width: 48px; height: 48px;
@@ -166,5 +204,84 @@ main {
   /* overflow: hidden; */
 }
 
+.main {
+  transition: all 0.5s;
+  -webkit-text-stroke: 5px #98a2f3;
+  /* -webkit-text-stroke: 5px linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%); */
+  font-variation-settings: "wght" 900, "ital" 1;
+  font-size: 4rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.505);
+  /* font-family: "Meta", sans-serif; */
+  text-shadow: 5px 5px 0px #FFF4D2,
+    8px 8px 0px #E5D1FA,
+    11px 11px 0px #99eecf,
+    14px 14px 0px #8EA7E9,
+    35px 35px 10px #ffffff00;
+  cursor: pointer;
+}
+
+.main:hover {
+  font-variation-settings: "wght" 100, "ital" 0;
+  text-shadow: none;
+}
 
 
+
+
+/* 체크박스 버튼 구현: Hide the default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 1.2em;
+  width: 1.2em;
+  background-color: #ccc;
+  border-radius: 100%;
+  background: #e8e8e8;
+  box-shadow: 3px 3px 5px #c5c5c5,
+              -3px -3px 5px #ffffff;
+  transition-duration: 0.5s;
+}
+
+.container input:checked ~ .checkmark {
+  box-shadow: inset 3px 3px 5px #c5c5c5,
+              inset -3px -3px 5px #ffffff;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  opacity: 0;
+}
+
+.container input:checked ~ .checkmark:after {
+  opacity: 1;
+}
+
+.container .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid rgb(135, 218, 186);
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+}

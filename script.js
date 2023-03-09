@@ -38,13 +38,31 @@ const convertToDiscussion = (agoraStatesDiscussions) => {
   information.className = "discussion__information";   
   information.textContent = `${agoraStatesDiscussions.author} / ${agoraStatesDiscussions.createdAt}`
 
-  discussionContent.append(information)
+
   discussionContent.append(titleBox);
+  discussionContent.append(information);
 
   // 체크박스
-  const checkBox = document.createElement("p");
-  checkBox.textContent = "☑";
-  discussionAnswered.append(checkBox);
+  const checkBoxLabel = document.createElement("label");
+  checkBoxLabel.className = "container";
+  const inputBox = document.createElement("input");
+  inputBox.type = "checkbox";
+  
+  if(agoraStatesDiscussions.answer === null) 
+  {  inputBox.checked = "";} else {inputBox.checked = "checked";}
+  
+
+  
+  
+  
+  const checkMarkBox = document.createElement("div");
+  checkMarkBox.className = "checkmark";
+
+  checkBoxLabel.append(inputBox)
+  checkBoxLabel.append(checkMarkBox)
+
+
+  discussionAnswered.append(checkBoxLabel);
 
   li.append(avatarWrapper, discussionContent, discussionAnswered);
   return li;
@@ -61,3 +79,105 @@ const render = (element) => {
 // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링한다.
 const ul = document.querySelector("ul.discussions__container");
 render(ul);
+
+
+
+
+console.clear();
+const randomX = random(-400, 400);
+const randomY = random(-200, 200);
+const randomDelay = random(0, 50);
+const randomTime = random(6, 12);
+const randomTime2 = random(5, 6);
+const randomAngle = random(-30, 150);
+
+const blurs = gsap.utils.toArray(".blur");
+blurs.forEach((blur) => {
+  gsap.set(blur, {
+    x: randomX(-1),
+    y: randomX(1),
+    rotation: randomAngle(-1)
+  });
+
+  moveX(blur, 1);
+  moveY(blur, -1);
+  rotate(blur, 1);
+});
+
+function rotate(target, direction) {
+  gsap.to(target, randomTime2(), {
+    rotation: randomAngle(direction),
+    // delay: randomDelay(),
+    ease: Sine.easeInOut,
+    onComplete: rotate,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function moveX(target, direction) {
+  gsap.to(target, randomTime(), {
+    x: randomX(direction),
+    ease: Sine.easeInOut,
+    onComplete: moveX,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function moveY(target, direction) {
+  gsap.to(target, randomTime(), {
+    y: randomY(direction),
+    ease: Sine.easeInOut,
+    onComplete: moveY,
+    onCompleteParams: [target, direction * -1]
+  });
+}
+
+function random(min, max) {
+  const delta = max - min;
+  return (direction = 1) => (min + delta * Math.random()) * direction;
+}
+
+
+// submit 버튼을 누르면 - 이름, 제목, 질문을 가져온다 - 아바타는 랜덤 - 
+// form.addEventListener('submit', createAgoraDiscussion)
+
+const submitBtn = document.querySelector("button")
+submitBtn.addEventListener('click', submitContentResult)
+
+function submitContentResult(event) {
+  console.log('click')
+	event.preventDefault()
+
+  let userName = document.querySelector('#name').value
+  let userTitle = document.querySelector('#title').value
+  let userStory = document.querySelector('#story').value
+
+	// 객체를 생성해 폼에서 입력받은 값을 넣어 준다. 
+  const newOne = {
+    id: "new id",
+    createdAt: new Date().toISOString(),
+    title: userTitle ,
+    url: "https://github.com/codestates-seb/agora-states-fe/discussions",
+    author: userName,
+    bodyHTML: userStory,
+    answer: null,
+    avatarUrl: "https://avatars.githubusercontent.com/u/97888923?s=64&u=12b18768cdeebcf358b70051283a3ef57be6a20f&v=4"
+  }
+
+
+agoraStatesDiscussions.unshift(newOne);
+const discussion = convertToDiscussion(newOne);
+ul.prepend(discussion);
+
+// **** 초기화되는 방법!!
+
+
+
+
+// 페이지네이션 구현하기 
+
+let numOfContent = agoraStatesDiscussions.length
+let countPage = Math.ceil ( totalQuestions / 10)
+let page = 1;
+
+}
