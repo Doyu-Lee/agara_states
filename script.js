@@ -153,7 +153,7 @@ function submitContentResult(event) {
   let userStory = document.querySelector('#story').value
 
 	// 객체를 생성해 폼에서 입력받은 값을 넣어 준다. 
-  const newOne = {
+  let newOne = {
     id: "new id",
     createdAt: new Date().toISOString(),
     title: userTitle ,
@@ -161,8 +161,34 @@ function submitContentResult(event) {
     author: userName,
     bodyHTML: userStory,
     answer: null,
-    avatarUrl: "https://avatars.githubusercontent.com/u/97888923?s=64&u=12b18768cdeebcf358b70051283a3ef57be6a20f&v=4"
+    avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkDKJe%2Fbtr2ZCJESvs%2FCmmMIpR2tKLJLoqbHuVNn0%2Fimg.png"
   }
+
+  const catUrl = [
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbTMXyl%2Fbtr2ZDIxQrH%2FOkZqBNhDsfoARokCnzl0Vk%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZdFsi%2Fbtr2Riytli6%2FTG76kTmYkZwFWM9f3Njte1%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlLU58%2Fbtr2QK22XA5%2FoS1IhF5MgHA3fqZdlvGM1K%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fzv7J0%2Fbtr2PVjf3yc%2FspnJdzwlWdKxqQ9loNtRIK%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fw8IfD%2Fbtr20ALlACg%2FmoPsKgDaC6Up2oCH6VyKLk%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FuIv3R%2Fbtr2QLgwaio%2FKMyLNydEO1kkLeXeOcBS11%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcL0dAj%2Fbtr2ZymThID%2FbpOBOk1Yv0ChVMTOzfw240%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FTANiX%2Fbtr22OChAqw%2F7CQcEqtsV9hIl4tZGoCCH0%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fzv7J0%2Fbtr2PVjf3yc%2FspnJdzwlWdKxqQ9loNtRIK%2Fimg.png"
+    },
+    {avatarUrl: "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FlLU58%2Fbtr2QK22XA5%2FoS1IhF5MgHA3fqZdlvGM1K%2Fimg.png"
+    },
+    
+  ]
+  const todaysCat = catUrl[Math.floor(Math.random() * catUrl.length)];
+  newOne.avatarUrl = todaysCat.avatarUrl
 
 
 agoraStatesDiscussions.unshift(newOne);
