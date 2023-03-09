@@ -5,50 +5,110 @@
 
 }
 
+html, body {
+  min-height: 100%;
+}
+
 body {
-  /* position: relative; */
   background-color: rgba(164, 164, 233, 0.367);
+  width: 100vw;
+  min-height: 100vh; 
+  margin: 0 auto;
+  position: relative;
+
+}
+
+.agora_title {
+  /* z-index: -1; */
+  position: absolute;
+  top: 23%;
+  left: 20%; right: 20%;
+  font-size: 6rem;
+  text-align: center;
+  width: 60%;
+}
+
+.form__container {
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+ul {
+  list-style: none;
+  padding-left: 0px;
 }
 
 main {
   position: absolute;
+  top: 30%;
+  left: 20%; right: 20%;
   z-index: 1;
-  margin: 5% 20%;
-  border: 1px solid green;
-  width: 60%;
+  margin: 7% auto;
+  width: 540px;
   border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.418);
+  box-shadow: 5px 5px 50px #bebebe,
+            -5px -5px 50px #ffffff;
 }
 
 .discussions__container {
-  border: 1px solid yellow;
+  /* border: 1px solid yellow; */
+
 }
 
 .discussions__container > .discussion__container {
-  border: 1px solid red;
+  padding: 0 3%;
+  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
+  height: 100px;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
 }
 
 .discussions__container > .discussion__container > .discussion__avatar--wrapper {
   border: 1px solid black;
-
+  border-radius: 70%;
+  overflow: hidden;
+  width: 48px; height: 48px;
+  
 }
 .discussion__avatar--image {
-  width: 50%px;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  
 }
 
 .discussion__content {
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
+  width: 78%;
 }
 .discussion__content > .discussion__title {
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
   font-size: 1rem;
+  text-align: left;
 }
 
 .discussion__content > .discussion__information {
-  border: 1px solid brown;
+  /* border: 1px solid brown; */
+  text-align: right;
+  font-size: 0.8rem;
 }
 .discussion__answered {
+  /* border: 1px solid rgb(42, 81, 165); */
+  width: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
 
 }
 
