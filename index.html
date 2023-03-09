@@ -10,9 +10,21 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.8/purify.js"
     integrity="sha512-QaF+0tDlqVmwZaQSc0kImgYmw+Cd66TxA5D9X70I5V9BNSqk6yBTbyqw2VEUsVYV5OTbxw8HD9d45on1wvYv7g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-</head>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet' href='https://use.typekit.net/skn8ash.css'>
+    <script src='https://unpkg.co/gsap@3/dist/gsap.min.js'></script>
+
+</head>
 <body>
+  <section class="wrapper">
+    <div class="blur"></div>
+    <div class="blur"></div>
+    <div class="blur"></div>
+  
+  </section>
+
+
   <main>
     <h1>My Agora States</h1>
     <section class="form__container">
@@ -37,6 +49,7 @@
       </form>
     </section>
     <section class="discussion__wrapper">
+      <!-- 여기서 계속 반복이 될 예정 -->
       <ul class="discussions__container">
         <li class="discussion__container">
           <div class="discussion__avatar--wrapper">
@@ -45,12 +58,15 @@
               alt="avatar of kimploo">
           </div>
           <div class="discussion__content">
-            <h2 class="discussion__title"><a href="https://github.com/codestates-seb/agora-states-fe/discussions/6">[notice] 좋은 질문하는 법</a></h2>
+            <h2 class="discussion__title">
+              <a href="https://github.com/codestates-seb/agora-states-fe/discussions/6">[notice] 좋은 질문하는 법</a>
+            </h2>
             <div class="discussion__information">kimploo / 2022-04-22T14:08:33Z</div>
           </div>
           <div class="discussion__answered"><p>☑</p></div>
         </li>
       </ul>
+      <!-- 여기까지 -->
     </section>
   </main>
 </body>
