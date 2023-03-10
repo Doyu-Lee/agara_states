@@ -1,7 +1,8 @@
 console.log(agoraStatesDiscussions);
 
 // convertToDiscussion은 아고라 스테이츠 데이터를 DOM으로 바꿔준다.
-
+// 샘플 시간 가독성 높이기 
+// .toISOString()
 
 const convertToDiscussion = (agoraStatesDiscussions) => {
   const li = document.createElement("li"); // li 요소 생성
@@ -36,7 +37,7 @@ const convertToDiscussion = (agoraStatesDiscussions) => {
 
   const information = document.createElement("div");
   information.className = "discussion__information";   
-  information.textContent = `${agoraStatesDiscussions.author} / ${agoraStatesDiscussions.createdAt}`
+  information.textContent = `${agoraStatesDiscussions.author} / ${new Date(agoraStatesDiscussions.createdAt).toLocaleString()}`
 
 
   discussionContent.append(titleBox);
@@ -190,20 +191,24 @@ function submitContentResult(event) {
   const todaysCat = catUrl[Math.floor(Math.random() * catUrl.length)];
   newOne.avatarUrl = todaysCat.avatarUrl
 
-
 agoraStatesDiscussions.unshift(newOne);
 const discussion = convertToDiscussion(newOne);
 ul.prepend(discussion);
 
 // **** 초기화되는 방법!!
-
-
-
+// title = "";
+// userName = "";
+// userStory = "";
+const form = document.querySelector("form")
+form.reset();
 
 // 페이지네이션 구현하기 
 
-let numOfContent = agoraStatesDiscussions.length
-let countPage = Math.ceil ( totalQuestions / 10)
-let page = 1;
+// let numOfContent = agoraStatesDiscussions.length
+// let countPage = Math.ceil ( totalQuestions / 10)
+// let page = 1;
 
 }
+
+
+// 메뉴바  
