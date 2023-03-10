@@ -29,48 +29,99 @@ body {
   position: absolute;
   top: 18%;
   left: 20%; right: 20%;
-  font-size: 5rem;
+  font-size: 6rem;
   text-align: center;
   width: 60%; height: 16%;
   font-family: 'LOTTERIACHAB';
 }
 
-/* .form__container {
-  border: 1px solid black;
-} */
-
 .form__container > .form {
+  /* border: 1px solid black; */
+
+  height: 200px;
   text-align: center;
   border-radius: 50px;
   background-color: rgba(255, 255, 255, 0.418);
   box-shadow: 5px 5px 50px #bebebe,
             -5px -5px 50px #ffffff;
   margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  padding-top: 30px;
+  
+}
+
+button.submit {
+border: transparent;
+border-radius: 61px;
+background: #e0e0e0bd;
+box-shadow:  17px 7px 56px #acaaaa,
+             -17px -17px 56px #ffffff;
+width: 60px;
+height: 36px;
 }
 
 .form__container > .form > .form__input--wrapper {
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
+  /* align-items: */
+  justify-content: center;
+  /* border: 1px solid red; */
+  padding-left: 30px;
+}
+@font-face {
+  font-family: 'KCC-Ganpan';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/KCC-Ganpan.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .form__input--name {
-
+  width: 100%;
+  text-align: left;
+  display: flex;
+  /* border: 1px solid green; */
+  margin-bottom: 4px;
 }
 
 .form__input--title {
-
+  width: 100%;
+  text-align: left;
+  display: flex;
+  margin-bottom: 4px;
 }
 
 .form__textbox {
+  width: 100%;
+  text-align: left;
+  /* border: 1px solid green; */
 
 }
 
 .form__submit {
 
 }
+.form__container > .form > .form__input--wrapper label {
+  display: block;
+  width: 40px;
+  /* border: 1px solid red; */
+  margin-right: 10px;
 
+}
+#name, #title {
+  border-radius: 10px;
+  border: 1px solid gray;
+}
 
+#story {
+  width: 93%;
+  padding: 3px;
+  height: 50px;
+  margin: 4px 0;
+  border-radius: 10px;
+
+}
 
 
 
@@ -86,7 +137,14 @@ main {
   z-index: 1;
   margin: 7% auto;
   width: 540px;
+  font-family: 'Dovemayo_gothic';
 
+}
+@font-face {
+  font-family: 'Dovemayo_gothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .discussions__container {
@@ -127,17 +185,28 @@ main {
 .discussion__content {
   /* border: 1px solid pink; */
   width: 78%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .discussion__content > .discussion__title {
   /* border: 1px solid purple; */
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: left;
+  text-decoration-line : none;
+}
+.discussion__content > .discussion__title a {
+  text-decoration-line : none;
+  color:rgba(72, 72, 130, 0.649)
 }
 
 .discussion__content > .discussion__information {
   /* border: 1px solid brown; */
   text-align: right;
-  font-size: 0.8rem;
+  font-size: 0.91rem;
+  color:rgba(120, 120, 120, 0.649)
+
 }
 .discussion__answered {
   /* border: 1px solid rgb(42, 81, 165); */
@@ -209,7 +278,7 @@ main {
   -webkit-text-stroke: 5px #98a2f3;
   /* -webkit-text-stroke: 5px linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%); */
   font-variation-settings: "wght" 900, "ital" 1;
-  font-size: 4rem;
+  font-size: 5rem;
   text-align: center;
   color: rgba(255, 255, 255, 0.505);
   /* font-family: "Meta", sans-serif; */
@@ -285,3 +354,5 @@ main {
   border-width: 0 0.15em 0.15em 0;
   transform: rotate(45deg);
 }
+
+/* 버튼
