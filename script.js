@@ -1,4 +1,4 @@
-console.log(agoraStatesDiscussions);
+// console.log(agoraStatesDiscussions);
 
 // convertToDiscussion은 아고라 스테이츠 데이터를 DOM으로 바꿔준다.
 // 샘플 시간 가독성 높이기 
@@ -69,12 +69,24 @@ const convertToDiscussion = (agoraStatesDiscussions) => {
   return li;
 };
 
+let data; // (1) 앞으로 사용할 데이터. 변수 선언
+const localStorageData = localStorage.getItem("discussionData");
+
+if(localStorageData) { // 만약 localStorageData가 있으면 (= submit을 한 번 한 이후)
+  data = JSON.parse(localStorageData) // 로컬 스토리지에서 가져온 데이터로 할당
+} else { // (2) localStorageData가 없으면 ( = 최초 렌더링일 경우)
+  data = agoraStatesDiscussions.slice(); // data는 agoraStatesDiscussions(원본 데이터)을 복사한 그대로. (QQQ: 처음 1번만 쓸 것이기 때문에 그냥 얕은 복사로? 주소값 같아도 상관없어서?)
+}
+
 // agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링하는 함수이다.
 const render = (element) => {
-  for (let i = 0; i < agoraStatesDiscussions.length; i += 1) {
-    element.append(convertToDiscussion(agoraStatesDiscussions[i]));
+  while (element.firstChild) { // (8-1) 일단 ul 안의 내용 다 지우기
+    element.removeChild(element.firstChild);
   }
-  return;
+  for (let i = 0; i < data.length; i += 1) { // (8-2) ul 안에 하나씩 다시 붙이기
+    element.append(convertToDiscussion(data[i]));
+  }
+  return 
 };
 
 // ul 요소에 agoraStatesDiscussions 배열의 모든 데이터를 화면에 렌더링한다.
@@ -84,7 +96,7 @@ render(ul);
 
 
 
-console.clear();
+// console.clear();
 const randomX = random(-400, 400);
 const randomY = random(-200, 200);
 const randomDelay = random(0, 50);
@@ -146,16 +158,17 @@ const submitBtn = document.querySelector("button")
 submitBtn.addEventListener('click', submitContentResult)
 
 function submitContentResult(event) {
-  console.log('click')
 	event.preventDefault()
 
   let userName = document.querySelector('#name').value
   let userTitle = document.querySelector('#title').value
   let userStory = document.querySelector('#story').value
 
+  let newList = []
+ 
 	// 객체를 생성해 폼에서 입력받은 값을 넣어 준다. 
   let newOne = {
-    id: "new id",
+    id: Math.random(),
     createdAt: new Date().toISOString(),
     title: userTitle ,
     url: "https://github.com/codestates-seb/agora-states-fe/discussions",
@@ -189,11 +202,21 @@ function submitContentResult(event) {
     
   ]
   const todaysCat = catUrl[Math.floor(Math.random() * catUrl.length)];
-  newOne.avatarUrl = todaysCat.avatarUrl
+  newOne.avatarUrl = todaysCat.avatarUrl;
+  data.unshift(newOne);
+  localStorage.setItem("discussionData", JSON.stringify(data));
+  render(ul);
 
-agoraStatesDiscussions.unshift(newOne);
-const discussion = convertToDiscussion(newOne);
-ul.prepend(discussion);
+  // newList.push(newOne);
+  // localStorage.setItem('newList', JSON.stringify(newList));   // newList 속 객체들 브라우저 저장공간에 넣기 [{게시글1}, {게시글2}]
+
+
+  let retrievedObject = JSON.parse(localStorage.getItem('newList'));
+  console.log(retrievedObject)
+
+// agoraStatesDiscussions.unshift(newOne);
+// const discussion = convertToDiscussion(newOne);
+// ul.prepend(discussion);
 
 // **** 초기화되는 방법!!
 // title = "";
@@ -208,7 +231,10 @@ form.reset();
 // let countPage = Math.ceil ( totalQuestions / 10)
 // let page = 1;
 
-}
+
+} //클릭 이벤트 끝 
 
 
 // 메뉴바  
+// 브라우저를 끌 때는 데이터 삭제하기
+// localStorage.clear()
