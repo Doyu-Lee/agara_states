@@ -37,7 +37,7 @@ const convertToDiscussion = (agoraStatesDiscussions) => {
 
   const information = document.createElement("div");
   information.className = "discussion__information";   
-  information.textContent = `${agoraStatesDiscussions.author} / ${new Date(agoraStatesDiscussions.createdAt).toLocaleString()}`
+  information.textContent = `${agoraStatesDiscussions.author} / ${new Date(agoraStatesDiscussions.createdAt).toLocaleString().slice(0, -3)}`
 
 
   discussionContent.append(titleBox);
